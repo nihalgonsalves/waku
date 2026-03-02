@@ -6,6 +6,11 @@ import { Counter } from '../components/counter';
 export default async function HomePage() {
   const data = await getData();
 
+  const result = await env.test_db.prepare(
+    "SELECT 1",
+  )
+    .run();
+
   // Example: invoking waitUntil() on the Cloudflare executionCtx.
   // https://hono.dev/docs/api/context#executionctx
   waitUntil(
@@ -27,6 +32,7 @@ export default async function HomePage() {
       <h1 className="text-4xl font-bold tracking-tight">{data.headline}</h1>
       <p>{data.body}</p>
       <p>MAX_ITEMS = {maxItems}.</p>
+      {JSON.stringify({ result })}
       <Suspense fallback="Pending...">
         <ServerMessage />
       </Suspense>

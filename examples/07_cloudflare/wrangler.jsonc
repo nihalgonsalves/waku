@@ -22,5 +22,11 @@
       "globs": ["**/*.js", "**/*.mjs"]
     }
   ],
-  "no_bundle": true
+  "no_bundle": true,
+  "d1_databases": [
+    {
+      "binding": "test_db",
+      "database_name": "test_db",
+    },
+  ],
 }
